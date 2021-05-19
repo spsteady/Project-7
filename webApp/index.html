@@ -1,99 +1,77 @@
-<!-- **************************************************************
-*                                                                 *
-* Note to the person viewing this project:                        *
-*                                                                 *
-* The #region/#endregion are solely for ease of navigation        *
-* through the various files (Text Editor Used: vscode)            *
-*                                                                 *
-* Each section is foldable to avoid excessive scrolling.          *
-* (See images/folded-code.PNG)                                    *
-*                                                                 *
-* Only leaving this note in case you want to use this while going *
-* through the project to make it a little easier.                 *
-*                                                                 *
-****************************************************************-->
-
 <!-- #region HTML STARTER -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebApp&trade;</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/toggle-switches.css">
     <link rel="stylesheet" href="css/styles.css">
+    <title>WebApp&trade;</title>
 </head>
 <!-- #endregion -->
 
-<body class="grid-container">   
 <!-- #region HEADER -->
-    <header class="flex">
-        <h1>WebApp&trade;</h1>
-        <div class="bell-icon flex">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350">
-                <path fill="#indigo" d="M24 18v-8c0-5.5-4.5-10-10-10S4 4.5 4 10v8l-4 8h9.1c.5 2.3 2.5 4 4.9 4 2.4 0 4.4-1.7 4.9-4H28zM14 28c-1.3 0-2.4-.8-2.8-2h5.6c-.4 1.2-1.5 2-2.8 2zM3 24l3-6v-8c0-4.4 3.6-8 8-8s8 3.6 8 8v8l3 6z"/>
+<body>   
+  <div class="grid-container">
+    <header class="site-header">
+        <h1><span class="bold-font">Web</span>App&trade;</h1>
+        <div class="bell-icon-container">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 30 40" class="bell-icon">
+                    <path fill="#fff" d="M24 18v-8c0-5.5-4.5-10-10-10S4 4.5 4 10v8l-4 8h9.1c.5 2.3 2.5 4 4.9 4 2.4 0 4.4-1.7 4.9-4H28zM14 28c-1.3 0-2.4-.8-2.8-2h5.6c-.4 1.2-1.5 2-2.8 2zM3 24l3-6v-8c0-4.4 3.6-8 8-8s8 3.6 8 8v8l3 6z"/>
             </svg>
-            <div id="notifications">
-                <h2>Notifications</h2>
-            </div>
-        </div>             
-        <img id="profileImg" src="images/member-2.jpg" alt="user-profile-pic">
-        <h3>Justin Case</h3>
+            <div id="notifications-alert"></div>
+        </div>     
+        <p class="vertical-line"></p>        
+        <img class="profile-Img" src="images/member-1.jpg" alt="user-profile-pic">
+        <h3>Student Name</h3>
     </header>
 <!-- #endregion -->
 
 <!-- #region NAVIGATION -->
-    <nav class="nav-bar flex">
-        <a href="#">
-            <img src="icons/icon-dashboard.svg" alt="dashboard">
-        </a>
-        <a href="#">
-            <img src="icons/icon-visits.svg" alt="visitors">
-        </a>
-        <a href="#">
-            <img src="icons/icon-members.svg" alt="members">
-        </a>
-        <a href="#">
-            <img src="icons/icon-settings.svg" alt="settings">
-        </a>
+    <nav>
+        <div class="sidebar-nav">
+            <a href="#">
+                <img src="svgs/home.svg" alt="dashboard">
+            </a>
+            <a href="#">
+                <img src="svgs/bar-chart.svg" alt="visitors">
+            </a>
+            <a href="#">
+                <img src="svgs/members.svg" alt="members">
+            </a>
+            <a href="#">
+                <img src="svgs/settings.svg" alt="settings">
+            </a>
+        </div>
     </nav>
-
-    <main>
-        <div class="dashboard-headliner flex">
-            <h2 class="headliner">Dashboard</h2>
-        </div>
-
-        <div class="alert" id="alert" >
-            <!-- JS will insert alert here -->
-        </div>
 <!-- #endregion -->
-    
+
+<!-- #region DASHBOARD-TAB & ALERT -->
+    <section class="dash-empty-header">
+        <div class="dashboard-empty">
+            <h2 class="dashboard-start">Dashboard</h2>
+            <div class="empty-block"></div>  
+        </div>        
+        <div id="alert"></div>
+    </section>
+<!-- #endregion -->
+
 <!-- #region TRAFFIC CHART -->
+    <main>
         <section class="traffic">
-            <div class="traffic-header flex">
-                <h3>Traffic</h3>
-                <fieldset>
-                    <legend>View</legend>
-                    <div class="switch-toggle switch-ios">
-
-                        <input id="hour" name="view" type="radio" checked>
-                        <label for="hour" onclick="">Hourly</label>
-                    
-                        <input id="day" name="view" type="radio">
-                        <label for="day" onclick="">Daily</label>
-                    
-                        <input id="week" name="view" type="radio">
-                        <label for="week" onclick="">Weekly</label>
-
-                        <input id="month" name="view" type="radio">
-                        <label for="month" onclick="">Monthly</label>
-                    
-                        <a></a>
-                    </div>
-                </fieldset>
+            <div class="traffic-container">
+                <!-- <div class="traffic-h3"> -->
+                <h3 class="section-title non-mobile">Traffic</h3>
+                <ul class="traffic-nav">
+                    <li class="traffic-nav-link active">Hourly</li>
+                    <li class="traffic-nav-link">Daily</li>
+                    <li class="traffic-nav-link">Weekly</li>
+                    <li class="traffic-nav-link">Monthly</li>
+                </ul>
             </div>
 
             <div class="widget-container-full">
@@ -105,199 +83,255 @@
 
 <!-- #region DAILY CHART (BAR GRAPH) -->
         <section class="daily">
-            <h3>Daily Traffic</h3>
+            <h3 class="section-title">Daily Traffic</h3>
             <div class="widget-container-half">
                 <!-- element bar graph will attach to -->
                 <canvas id="daily-chart"></canvas>
             </div>
-        </section>  
+        </section> 
 <!-- #endregion -->
 
 <!-- #region DOUGHNUT CHART -->
         <section class="users-mobile">
-            <h3>Mobile Users</h3>
+            <h3 class="section-title">Mobile Users</h3>
             <div class="widget-container-half">
                 <!-- element bar graph will attach to -->
                 <canvas id="usersMobile-chart"></canvas>
             </div>
-        </section> 
+        </section>
 <!-- #endregion -->
 
 <!-- #region SOCIAL MEDIA STATISTICS -->
-        <div class="social-container flex">
-            <h3>Social Stats</h3>
-            <div class="social-image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="32" width="32">
-                    <path fill="green" d="M23.435 10.362H18.37V7.04c0-1.248.827-1.539 1.409-1.539h3.573V.02L18.432 0c-5.464 0-6.707 4.09-6.707 6.707v3.655h-3.16v5.65h3.16V32h6.646V16.012h4.484z"/>
-                </svg>
-            </div>
-            <div class="social-text">
-                <p class="social-font">Facebook</p>
-                <p class="social-stats">10,320</p>
-            </div>
-            <div class="social-image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="32" width="32">
-                    <path fill="red" d="M32 3.1c-1.2.5-2.4.9-3.8 1 1.4-.8 2.4-2.1 2.9-3.6-1.3.8-2.7 1.3-4.2 1.6C25.8.8 24 0 22.2 0c-3.6 0-6.6 2.9-6.6 6.6 0 .5.1 1 .2 1.5-5.5-.3-10.3-2.9-13.6-6.9-.6 1-.9 2.1-.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-.3-3-.8v.1c0 3.2 2.3 5.8 5.3 6.4-.6.1-1.1.2-1.7.2-.4 0-.8 0-1.2-.1.8 2.6 3.3 4.5 6.1 4.6-2.2 1.8-5.1 2.8-8.2 2.8-.5 0-1.1 0-1.6-.1 2.9 1.9 6.4 3 10.1 3 12.1 0 18.7-10 18.7-18.7v-.8c1.3-1 2.4-2.2 3.3-3.5z"/>
-                    </svg>
-                    <!-- viewBox="0 0 225 225" -->
-            </div>
-            <div class="social-text">
-                <p class="social-font">Twitter</p>
-                <p class="social-stats">22,189</p>
-            </div>
-            <div class="social-image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="32" width="32">
-                    <path fill="#00f" d="M17.7 25.7c0-.3 0-.5-.1-.8-.1-.2-.1-.5-.2-.7-.1-.2-.2-.4-.3-.7-.2-.2-.3-.4-.4-.6-.1-.2-.3-.3-.5-.6l-.5-.5c-.1-.1-.3-.3-.6-.5s-.5-.4-.6-.4-.3-.2-.6-.4-.5-.4-.6-.4h-1c-.7 0-1.4 0-2 .1-.7.1-1.4.2-2.1.5-.7.2-1.3.5-1.9.9s-1 .8-1.3 1.4c-.3.6-.5 1.3-.5 2.1 0 .9.2 1.7.7 2.3.5.7 1.1 1.2 1.8 1.6s1.5.7 2.3.9 1.6.3 2.4.3c.8 0 1.5-.1 2.2-.2.7-.2 1.3-.4 1.9-.8.6-.3 1.1-.8 1.4-1.4.3-.6.5-1.3.5-2.1zM15.4 9.1c0-.8-.1-1.6-.3-2.5-.2-.9-.5-1.7-.9-2.5s-.9-1.5-1.6-2c-.7-.5-1.5-.8-2.3-.8-1.2 0-2.1.4-2.8 1.3-.7.9-1 1.9-1 3.2 0 .6.1 1.2.2 1.9s.4 1.3.7 2c.3.7.7 1.3 1.1 1.8.4.5.9 1 1.5 1.3.6.3 1.2.5 1.9.5 1.2 0 2.1-.4 2.7-1.2.5-.7.8-1.7.8-3zM12.9 0h8.4l-2.6 1.5h-2.6c.9.6 1.6 1.4 2.1 2.4S19 6 19 7.1c0 .9-.1 1.8-.4 2.5-.3.7-.7 1.3-1.1 1.8-.4.4-.8.9-1.3 1.2-.4.4-.8.8-1.1 1.2-.3.4-.4.8-.4 1.3 0 .3.1.7.3 1 .2.3.5.6.8.9.3.3.7.6 1.1.9.4.3.8.7 1.2 1.1.4.4.8.8 1.1 1.3.3.5.6 1 .8 1.6.2.6.3 1.3.3 2 0 2.1-.9 3.9-2.7 5.4-1.9 1.7-4.6 2.5-8.1 2.5-.8 0-1.5-.1-2.3-.2-.8-.1-1.6-.3-2.3-.6-.8-.3-1.5-.7-2.1-1.1-.6-.4-1.1-1-1.5-1.7C1 27.6.8 26.9.8 26c0-.8.2-1.6.7-2.6.4-.8 1-1.5 1.8-2.1.8-.6 1.8-1.1 2.8-1.4 1-.3 2-.5 3-.7.9-.1 1.9-.2 2.9-.3-.8-1.1-1.2-2-1.2-2.9v-.5c0-.1.1-.3.1-.4 0-.1.1-.2.2-.4s.1-.3.1-.4c-.5.1-1 .1-1.3.1-1.9 0-3.5-.6-4.9-1.9-1.4-1.3-2-2.8-2-4.7C3 6 3.6 4.4 4.8 3 6 1.7 7.5.8 9.3.4c1.2-.3 2.4-.4 3.6-.4zm19.9 4.9v2.5h-4.9v4.9h-2.5V7.4h-4.9V4.9h4.9V0h2.5v4.9h4.9z"/>
-                    </svg>
+        <section class="social-statistics">
+            <h3 class="section-title">Social Stats</h3>
+            <div class="social-container">
+                  <div class="sub-section">
+                    <div class="social-image">
+                        <svg class="social-icon facebook" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -6 38 38">
+                            <path fill="#7477bf" d="M23.435 10.362H18.37V7.04c0-1.248.827-1.539 1.409-1.539h3.573V.02L18.432 0c-5.464 0-6.707 4.09-6.707 6.707v3.655h-3.16v5.65h3.16V32h6.646V16.012h4.484z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <p class="social-name">Facebook</p>
+                        <p class="social-stats">10,320</p>
+                    </div>
+                 </div> 
 
-            </div>
-            <div class="social-text">
-                <p class="social-font">Google+</p>
-                <p class="social-stats">16,445</p>
-            </div>
-        </div>
+                <div class="sub-section">
+                    <div class="social-image">
+                        <svg class="social-icon twitter" xmlns="http://www.w3.org/2000/svg" viewBox="-6 -8 40 40">
+                            <path d="M32 3.1c-1.2.5-2.4.9-3.8 1 1.4-.8 2.4-2.1 2.9-3.6-1.3.8-2.7 1.3-4.2 1.6C25.8.8 24 0 22.2 0c-3.6 0-6.6 2.9-6.6 6.6 0 .5.1 1 .2 1.5-5.5-.3-10.3-2.9-13.6-6.9-.6 1-.9 2.1-.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-.3-3-.8v.1c0 3.2 2.3 5.8 5.3 6.4-.6.1-1.1.2-1.7.2-.4 0-.8 0-1.2-.1.8 2.6 3.3 4.5 6.1 4.6-2.2 1.8-5.1 2.8-8.2 2.8-.5 0-1.1 0-1.6-.1 2.9 1.9 6.4 3 10.1 3 12.1 0 18.7-10 18.7-18.7v-.8c1.3-1 2.4-2.2 3.3-3.5z"/>
+                        </svg>                            
+                    </div>
+                    <div class="social-text">
+                        <p class="social-name">Twitter</p>
+                        <p class="social-stats">22,189</p>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="social-image goog">                        
+                        <svg class="social-icon google" xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 42 42">
+                            <path fill="#ffffff" d="M17.7 25.7c0-.3 0-.5-.1-.8-.1-.2-.1-.5-.2-.7-.1-.2-.2-.4-.3-.7-.2-.2-.3-.4-.4-.6-.1-.2-.3-.3-.5-.6l-.5-.5c-.1-.1-.3-.3-.6-.5s-.5-.4-.6-.4-.3-.2-.6-.4-.5-.4-.6-.4h-1c-.7 0-1.4 0-2 .1-.7.1-1.4.2-2.1.5-.7.2-1.3.5-1.9.9s-1 .8-1.3 1.4c-.3.6-.5 1.3-.5 2.1 0 .9.2 1.7.7 2.3.5.7 1.1 1.2 1.8 1.6s1.5.7 2.3.9 1.6.3 2.4.3c.8 0 1.5-.1 2.2-.2.7-.2 1.3-.4 1.9-.8.6-.3 1.1-.8 1.4-1.4.3-.6.5-1.3.5-2.1zM15.4 9.1c0-.8-.1-1.6-.3-2.5-.2-.9-.5-1.7-.9-2.5s-.9-1.5-1.6-2c-.7-.5-1.5-.8-2.3-.8-1.2 0-2.1.4-2.8 1.3-.7.9-1 1.9-1 3.2 0 .6.1 1.2.2 1.9s.4 1.3.7 2c.3.7.7 1.3 1.1 1.8.4.5.9 1 1.5 1.3.6.3 1.2.5 1.9.5 1.2 0 2.1-.4 2.7-1.2.5-.7.8-1.7.8-3zM12.9 0h8.4l-2.6 1.5h-2.6c.9.6 1.6 1.4 2.1 2.4S19 6 19 7.1c0 .9-.1 1.8-.4 2.5-.3.7-.7 1.3-1.1 1.8-.4.4-.8.9-1.3 1.2-.4.4-.8.8-1.1 1.2-.3.4-.4.8-.4 1.3 0 .3.1.7.3 1 .2.3.5.6.8.9.3.3.7.6 1.1.9.4.3.8.7 1.2 1.1.4.4.8.8 1.1 1.3.3.5.6 1 .8 1.6.2.6.3 1.3.3 2 0 2.1-.9 3.9-2.7 5.4-1.9 1.7-4.6 2.5-8.1 2.5-.8 0-1.5-.1-2.3-.2-.8-.1-1.6-.3-2.3-.6-.8-.3-1.5-.7-2.1-1.1-.6-.4-1.1-1-1.5-1.7C1 27.6.8 26.9.8 26c0-.8.2-1.6.7-2.6.4-.8 1-1.5 1.8-2.1.8-.6 1.8-1.1 2.8-1.4 1-.3 2-.5 3-.7.9-.1 1.9-.2 2.9-.3-.8-1.1-1.2-2-1.2-2.9v-.5c0-.1.1-.3.1-.4 0-.1.1-.2.2-.4s.1-.3.1-.4c-.5.1-1 .1-1.3.1-1.9 0-3.5-.6-4.9-1.9-1.4-1.3-2-2.8-2-4.7C3 6 3.6 4.4 4.8 3 6 1.7 7.5.8 9.3.4c1.2-.3 2.4-.4 3.6-.4zm19.9 4.9v2.5h-4.9v4.9h-2.5V7.4h-4.9V4.9h4.9V0h2.5v4.9h4.9z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <p class="social-name">Google+</p>
+                        <p class="social-stats">16,445</p>
+                    </div>
+                </div> 
+            </div>  
+        </section>
+        
+        
 <!-- #endregion -->
 
 <!-- #region MEMBERS SECTION -->
-        <section class="members flex">
-            <h3>New Members</h3>
-            <div class="members-container flex">
-                <img src="images/member-1.jpg" class="profile-image">
-                <div class="members-text">
-                    <p>Victoria Chambers</p>
-                    <a class="members-email" href="#">victoria.chambers80@example.com</a>
-                </div >
-                <p class="date-joined">10/15/20</p>
-            </div>
-            <div class="members-container flex">
-                <img src="images/member-2.jpg" class="profile-image">
-                <div class="members-text flex">
-                    <p>Dale Byrd</p>
-                    <a class="members-email" href="#">dale.byrd52@example.com</a>
+        <section class="members">
+          <h3 class="section-title">New Members</h3>
+            <div class="members-container">                
+                <div class="member-section">
+                  <div class="member-info">
+                    <img class="member-Img leader" src="images/member-1.jpg" alt="Photo of Victoria">
+                    <div class="members-text">
+                        <p>Victoria Chambers</p>
+                        <a class="members-email" href="mailto:victoria.chambers80@example.com">victoria.chambers80@example.com</a>
+                    </div >
+                  </div>
+                    <p class="date-joined">10/15/20</p>    
                 </div>
-                <p class="date-joined">10/15/20</p>
-            </div>
-            <div class="members-container flex">
-                <img src="images/member-3.jpg" class="profile-image">
-                <div class="members-text">
-                    <p>Dawn Wood</p>
-                    <a class="members-email" href="#">dawn.wood16@example.com</a>
+
+                <div class="member-section">
+                  <div class="member-info">
+                    <img class="member-Img" src="images/member-2.jpg" class="Photo of Dale">
+                    <div class="members-text">
+                        <p>Dale Byrd</p>
+                        <a class="members-email" href="mailto:dale.byrd52@example.com">dale.byrd52@example.com</a>
+                    </div>
+                  </div>
+                    <p class="date-joined">10/15/20</p>
                 </div>
-                <p class="date-joined">10/15/20</p>
-            </div>
-            <div class="members-container flex">
-                <img src="images/member-4.jpg" class="profile-image">
-                <div class="members-text">
-                    <p>Dan Oliver</p>
-                    <a class="members-email" href="#">dan.oliver82@example.com</a>
+
+                <div class="member-section">
+                  <div class="member-info">
+                    <img class="member-Img" src="images/member-3.jpg" class="Photo of Dawn">
+                    <div class="members-text">
+                        <p>Dawn Wood</p>
+                        <a class="members-email" href="mailto:dawn.wood16@example.com">dawn.wood16@example.com</a>
+                    </div>
+                  </div>
+                    <p class="date-joined">10/15/20</p>
                 </div>
-                <p class="date-joined">10/15/20</p>
-            </div>
+
+                <div class="member-section last-member">
+                  <div class="member-info">
+                    <img class="member-Img" src="images/member-4.jpg" class="Photo of Dan">
+                    <div class="members-text">
+                        <p>Dan Oliver</p>
+                        <a class="members-email" href="mailto:dan.oliver82@example.com">dan.oliver82@example.com</a>
+                    </div>
+                  </div>
+                    <p class="date-joined">10/15/20</p>
+                </div>
+            </div>          
         </section>
 <!-- #endregion -->
 
 <!-- #region MEMBERS ACTIVITY SECTION -->
-        <section class="recent-activity flex">
-            <h3>Recent Activity</h3>
-            <div class="members-container flex">
-                <img src="images/member-1.jpg" class="profile-image">
-                <div class="members-text flex">
-                    <p>Victoria Chambers commented on WebApp's SEO Tips</p>
-                    <p>4 hours ago</p>
-                </div>
-                <p class="expand"> > </p>
+        <section class="recent-activity">
+          <h3 class="section-title">Recent Activity</h3>
+          <div class="members-container">
+            <div class="member-section">
+                <div class="member-info">
+                    <img class="member-Img" src="images/member-1.jpg" class="profile-image">
+                    <div class="members-text">
+                        <p>Victoria Chambers commented on <span id="bold-font">WebApp's SEO Tips</span></p>
+                        <p class="activity-time">4 hours ago</p>
+                    </div>
+              </div>
+                <p class="carrot">></p>
             </div>
-            <div class="members-container flex">
-                <img src="images/member-2.jpg" class="profile-image">
-                <div class="members-text flex">
-                    <p>Dale Byrd liked the post Facebook's Changes for 2021</p>
-                    <p>5 hours ago</p>
-                </div>
-                <p class="expand"> > </p>
+
+            <div class="member-section">
+              <div class="member-info">
+                    <img class="member-Img" src="images/member-2.jpg" class="profile-image">
+                    <div class="members-text">
+                        <p>Dale Byrd liked the post <span id="bold-font">Facebook's Changes for 2021</span></p>
+                        <p id="activity-time">5 hours ago</p>
+                    </div>
+              </div>
+                <p class="carrot">></p>
             </div>
-            <div class="members-container flex">
-                <img src="images/member-3.jpg" class="profile-image">
-                <div class="members-text flex">
-                    <p>Dawn Wood commented on Facebook's Changes for 2021</p>
-                    <p>5 hours ago</p>
-                    <p class="expand"> > </p>
-                </div>
+
+            <div class="member-section">
+              <div class="member-info">
+                    <img class="member-Img" src="images/member-3.jpg" class="profile-image">
+                    <div class="members-text">
+                        <p>Dawn Wood commented on <span id="bold-font">Facebook's Changes for 2021</span></p>
+                        <p id="activity-time">5 hours ago</p>                    
+                    </div>
+              </div>
+                <p class="carrot">></p>                
             </div>
-            <div class="members-container flex">
-                <img src="images/member-4.jpg" class="profile-image">
-                <div class="members-text flex">
-                    <p>Dan Oliver posted WebApp's SEO Tips</p>
-                    <p>1 day ago</p>
-                    <p class="expand"> > </p>
-                </div>
+
+            <div class="member-section last-member">
+              <div class="member-info">
+                    <img class="member-Img" src="images/member-4.jpg" class="profile-image">
+                    <div class="members-text">
+                        <p>Dan Oliver posted <span id="bold-font">WebApp's SEO Tips</span></p>
+                        <p id="activity-time">1 day ago</p>                    
+                    </div>
+              </div>
+                <p class="carrot">></p>
             </div>
-        </section>
+          </div>
+        </section>        
 <!-- #endregion -->
 
 <!-- #region MESSAGE USERS SECTION -->
-        <section class="message">
-            <h3>Message User</h3>
-            <form class="widget-container message-input flex">
+        <section class="message">           
+            <h3 class="section-title">Message User</h3>            
+            <form class="widget-container">
                 <input type="text" placeholder="Search for user" class="form-field" id="userField">
                 <textarea placeholder="Message for user" class="form-area" id="messageField"></textarea>
                 <button class="button-primary" id="send">Send</button>
             </form>
         </section>
+        
 <!-- #endregion -->
 
 <!-- #region SETTINGS SECTION -->
+
+<!-- TOGGLE SWITCHES -->
         <section class="settings">
-            <h3>Settings</h3>
-            <div class="toggle-container">
-                <p>Send Email Notifications</p>
-                <label class="switch-light switch-ios switches" onclick="">
-                    <input type="checkbox">
-                    <span>
-                        <span>Off</span>
-                        <span>On</span>
-                        <a></a>
-                    </span>
-                </label>
+            <h3 class="section-title">Settings</h3>
+            <div class="switches-container">
+                <div class="toggles switch1">
+                    <p id="settings-text">
+                        Send Email Notifications
+                    </p>
+                    <label class="switch-light switch-ios switch-a" onclick="">
+                    <input id="email-checkbox" store="checkbox1" type="checkbox">
+                        <span>
+                            <span id="off">Off</span>
+                            <span id="on">On</span>
+                            <a></a>
+                        </span>
+                    </label>
+                </div>
 
-                <p>Set Profile to Public</p>
-                <label class="switch-light switch-ios switches" onclick="">
-                    <input type="checkbox">
-                    <span>
-                        <span>Off</span>
-                        <span>On</span>
-                        <a></a>
-                    </span>
-                </label>
+                <div class="toggles switch2">
+                    <p id="settings-text">
+                        Set Profile to Public
+                    </p>
+                    <label class="switch-light switch-ios switch-b" onclick="">
+                    <input id="public-checkbox" store="checkbox2" type="checkbox">
+                        <span>
+                            <span id="off">Off</span>
+                            <span id="on">On</span>
+                            <a></a>
+                        </span>
+                    </label>
+                </div>
             </div>
-<!-- #endregion -->
 
-<!-- #region TIMEZONE DROPDOWN MENU -->            
-            <div class="dropdown-tzone flex">
-                <select class="form-field" id="timezone">
-                    <option disabled selected>Select a Timezone</option>
-                    <option>Atlantic Standard Time (AST)</option>
-                    <option>Eastern Standard Time (EST)</option>
-                    <option>Central Standard Time (CST)</option>
-                    <option>Mountain Standard Time(MST)</option>
-                    <option>Pacific Standard Time (PST)</option>
-                    <option>Alaska Standard Time (AKST)</option>
-                    <option>Hawaii Standard Time (HST)</option>
-                </select>
-            </div>
-<!-- #endregion -->
-
-<!-- #region SAVE & CANCEL BUTTONS -->
-            <div class="settings-button" >
-                <button class="button-save" id="save">Save</button>
-                <button class="button-cancel" id="cancel">Cancel</button>
-            </div>
-        </section>  
-    </main> 
-<!-- #endregion -->
+<!-- TIMEZONE DROPDOWN -->
+            <div class="timezone">
+                <div class="timezone-container">
+                    <select class="form-field" id="timezone">
+                        <option disabled selected>Select a Timezone</option>
+                        <option>Turkey Time (Gobble Gobble)</option>
+                        <option>Atlantic Standard Time (AST)</option>
+                        <option>Eastern Standard Time (EST)</option>
+                        <option>Central Standard Time (CST)</option>
+                        <option>Mountain Standard Time(MST)</option>
+                        <option>Pacific Standard Time (PST)</option>
+                        <option>Alaska Standard Time (AKST)</option>
+                        <option>Hawaii Standard Time (HST)</option>
+                        <option>Arabia Daylight Time (ADT)</option>
+                        <option>Australian Eastern Time (AET)</option>
+                        <option>Afghanistan Time</option>
+                        <option>Argentina Time</option>
+                        <option>London Time</option>
+                        <option>Russia Time</option>
+                    </select>  
+                 
+<!-- SETTINGS BUTTONS -->
+                    <div class="buttons-settings" >
+                        <button class="button-save" id="save">Save</button>
+                        <button class="button-cancel" id="cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>            
+        </section>
+     
+    </main>
+  </div> 
+<!-- #endregion --> 
 
 <!-- #region SCRIPTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<!-- #endregion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
+<!-- #endregion -->
