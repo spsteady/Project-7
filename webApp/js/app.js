@@ -26,29 +26,6 @@ alertBanner.addEventListener('click', e => {
 //#endregion
 
 //#region TRAFFIC CHART
-let timeSelect = document.querySelectorAll('.traffic-nav-link');
-
-timeSelect.forEach((selection) => {
-  selection.addEventListener("click", (e) => {
-    if (e.target.classList.contains("traffic-nav-link")) {
-      document.querySelector(".active").classList.remove("active");
-      e.target.classList.add("active");
-      if (selection === "Hourly") {
-        return trafficChart(hourData);
-        
-      } else if (selection === "Daily") {
-        return trafficChart(dayData);
-        
-      } else if (selection === "Weekly") {
-        return trafficChart(weekData);
-        
-      } else if (selection === "Monthly") {
-        return trafficChart(monthData);
-      }
-    }
-  });
-});
-
 let hourData = {
   labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   datasets: [{
@@ -112,13 +89,48 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
   type: 'line',
-  data: monthData,
+  data: hourData,
   options: trafficOptions
+});
+
+let trafficTerm = document.getElementsByClassName("traffic-nav")[0];
+trafficTerm.addEventListener("click", (e) => {
+  if (e.target.classList.contains("traffic-nav-link")) {
+    document.querySelector(".active").classList.remove("active");
+    e.target.classList.add("active");
+    let selection = e.target.textContent;
+    console.log(selection);
+    if ( selection === "Hourly") {
+      let trafficChart = new Chart(trafficCanvas, {
+        type: 'line',
+        data: hourData,
+        options: trafficOptions
+        });
+    } else if (selection === "Daily") {
+      let trafficChart = new Chart(trafficCanvas, {
+        type: 'line',
+        data: dayData,
+        options: trafficOptions
+        });
+    } else if (selection === "Weekly") {
+      let trafficChart = new Chart(trafficCanvas, {
+        type: 'line',
+        data: weekData,
+        options: trafficOptions
+        });
+    } else if (selection === "Monthly") {
+      let trafficChart = new Chart(trafficCanvas, {
+        type: 'line',
+        data: monthData,
+        options: trafficOptions
+        });
+    }
+  };
 });
 //#endregion
 
 //#region DAILY CHART (BAR GRAPH)
-const dailyData = {
+const barData = {
   labels: ["S", "M", "T", "W", "T", "F", "S"],
   datasets: [{
     label: '# of Hits',
@@ -143,7 +155,7 @@ const dailyOptions = {
 
 let dailyChart = new Chart(dailyCanvas, {
   type: 'bar',
-  data: dailyData,
+  data: barData,
   options: dailyOptions
 });
 //#endregion
