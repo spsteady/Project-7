@@ -26,6 +26,17 @@ alertBanner.addEventListener('click', e => {
 //#endregion
 
 //#region TRAFFIC CHART
+let pageStartData = {
+  labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+  datasets: [{
+      data: [187, 475, 250, 500, 375, 450, 312, 470, 566, 375, 625, 200],
+      backgroundColor: "rgba(116, 119, 191,.3)",
+      borderColor: "#7477BF",
+      fill: true,
+      borderWidth: 1,
+  }]
+};
+
 let hourData = {
   labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   datasets: [{
@@ -89,9 +100,18 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
   type: 'line',
-  data: hourData,
+  data: pageStartData,
   options: trafficOptions
 });
+
+const updateChart = (chart, newData) => {
+  chart.data.labels = newData.labels;
+  chart.data.datasets[0].data = newData.datasets[0].data;
+  chart.update({
+    duration: 800,
+    easing: 'linear',
+  });
+};
 
 let trafficTerm = document.getElementsByClassName("traffic-nav")[0];
 trafficTerm.addEventListener("click", (e) => {
@@ -101,29 +121,13 @@ trafficTerm.addEventListener("click", (e) => {
     let selection = e.target.textContent;
     console.log(selection);
     if ( selection === "Hourly") {
-      let trafficChart = new Chart(trafficCanvas, {
-        type: 'line',
-        data: hourData,
-        options: trafficOptions
-        });
+      updateChart(trafficChart, hourData);
     } else if (selection === "Daily") {
-      let trafficChart = new Chart(trafficCanvas, {
-        type: 'line',
-        data: dayData,
-        options: trafficOptions
-        });
+      updateChart(trafficChart, dayData);
     } else if (selection === "Weekly") {
-      let trafficChart = new Chart(trafficCanvas, {
-        type: 'line',
-        data: weekData,
-        options: trafficOptions
-        });
+      updateChart(trafficChart, weekData);
     } else if (selection === "Monthly") {
-      let trafficChart = new Chart(trafficCanvas, {
-        type: 'line',
-        data: monthData,
-        options: trafficOptions
-        });
+      updateChart(trafficChart, monthData);
     }
   };
 });
