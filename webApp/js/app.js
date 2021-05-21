@@ -84,7 +84,7 @@ let monthData = {
 let trafficOptions = {
   aspectRatio: 2.5,
   animation: {
-      duration: 0
+      duration: 1000
   },
   scales: {
       y: {
@@ -113,8 +113,8 @@ const updateChart = (chart, newData) => {
   });
 };
 
-let trafficTerm = document.getElementsByClassName("traffic-nav")[0];
-trafficTerm.addEventListener("click", (e) => {
+let trafficNavBtn = document.getElementsByClassName("traffic-nav")[0];
+trafficNavBtn.addEventListener("click", (e) => {
   if (e.target.classList.contains("traffic-nav-link")) {
     document.querySelector(".active").classList.remove("active");
     e.target.classList.add("active");
