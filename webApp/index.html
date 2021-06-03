@@ -252,7 +252,9 @@
         <section class="message">           
             <h3 class="section-title">Message User</h3>            
             <form class="widget-container">
-                <input type="text" placeholder="Search for user" class="form-field" id="userField">
+                <div class="autocomplete">
+                    <input type="text" autocopmlete="off" placeholder="Search for user" class="form-field" id="userField">
+                </div>
                 <textarea placeholder="Message for user" class="form-area" id="messageField"></textarea>
                 <button class="button-primary" id="send">Send</button>
             </form>
