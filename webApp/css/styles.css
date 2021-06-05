@@ -67,7 +67,7 @@ main {
 }
 /* #endregion */
 
-/* #region HEADER */
+/* #region HEADER & NOTIFICATION ICON (POP-UPS) */
 .site-header {
   display: flex;
   align-items: center;
@@ -88,7 +88,7 @@ main {
   position: relative;
   flex-basis: 2.8em;
   margin-left: auto;
-  padding-right: 1em;  
+  padding-right: 1em; 
 }
 
 #notifications-alert {
@@ -99,6 +99,37 @@ main {
   border-radius: 50%;
   top: 0;
   right: 12px;   
+}
+
+.bell-icon:hover {
+  animation: swing 0.5s ease-in-out 0s forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(20deg);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(15deg);
+  }
+
+  80% {
+    transform: rotate(-15deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .vertical-line {
@@ -142,7 +173,7 @@ main {
 }
 /* #endregion */
 
-/* #region DASHBOARD-TAB & ALERT */
+/* #region DASHBOARD-TAB & ALERT BANNER*/
 .dashboard-empty {
   display: flex;
   align-items: center;
@@ -224,6 +255,18 @@ main {
   background-color: #81c98f;
   border-radius: 45px;
   color: #fafdfb;
+}
+/* #endregion */
+
+/* #region CHART WIDGETS SIZING/POSITIONING */
+/* Charts.js....that's gonna take some studying and figuring out that stuff */
+#traffic-chart,
+#daily-chart,
+#usersMobile-chart {
+  padding: 1.5em;
+}
+canvas {
+  max-width: 100%;
 }
 /* #endregion */
 
@@ -553,12 +596,17 @@ button:active {
     border-right: 2px solid #dddddd;
   }
 
-  .widget-container-full {
+  /* Not sure what's going on, but this code is causing the chart only to fill only two-thirds of the chart space, study guide shows to use width: 90vw...but if you add the responsive option to the option chain, the 100% works appropriately...wth?
+  https://www.chartjs.org/docs/2.7.2/general/responsive.html - NOTE: !important - I tried this with secondary code targeting the canvas...that did not work either, so I removed 90vw code block and it worked, so I just changed it to width: 100% after adding responsive: true to the option chain in app.js. In addition, fiddled with the aspect ratios as well. */
+  /* .widget-container-full {
     width: 90vw;
+  } */
+  .widget-container-full {
+    width: 100%;
   }
 
   .widget-container-half {
-    width: 40vw;
+    width: 90%;
   }
   /* #endregion */
 

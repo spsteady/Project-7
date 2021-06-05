@@ -1,4 +1,7 @@
-//#region ALERT BANNER
+//#region CONSTs & ALERT BANNER & NOTIFICATION ICON (POP-UPS)
+const bellAlert = document.getElementById("bellAlert");
+const bellMessage = document.getElementById("bellMessage");
+const dotMessage = document.getElementById("notifications-alert");
 const alertBanner = document.getElementById("alert");
 const trafficCanvas = document.getElementById("traffic-chart");
 const dailyCanvas = document.getElementById("daily-chart");
@@ -7,7 +10,19 @@ const user = document.getElementById("userField");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
 
-// Create the html for the banner
+// Notification Icon: (Alerts: pop-ups)
+bellAlert.addEventListener('click', e => {
+  if(e.target === bellMessage || e.target === dotMessage){
+    window.alert('I always take life with a grain of salt.');
+    window.alert('Plus, a slice of lemon.');
+    window.alert('And a shot of tequila.');
+    window.alert('End of notfications list, party on!')
+    dotMessage.style.display = 'none';
+  } 
+  // Pop-ups are ugly, will come back later and make it a more appropriate notification style
+});
+
+// Alert Banner: Create the html for the banner
 alertBanner.innerHTML = 
 `
 <div class="alert-banner">
@@ -16,7 +31,7 @@ alertBanner.innerHTML =
 </div>
 `
 
-// Create the eventListener to close the alert banner
+// Alert Banner: Create the eventListener to close the alert banner
 alertBanner.addEventListener('click', e => {
   const element = e.target;
   if (element.classList.contains("alert-banner-close")) {
@@ -26,6 +41,7 @@ alertBanner.addEventListener('click', e => {
 //#endregion
 
 //#region TRAFFIC CHART
+// YEEEEAAAAH...chart.js is not fun. Dig into their documentation and start compiling notes for later use.
 let pageStartData = {
   labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   datasets: [{
@@ -49,9 +65,9 @@ let hourData = {
 };
 
 let dayData = {
-  labels: ["1-73", "74-146", "147-220", "221-294", "295-365"],
+  labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
   datasets: [{
-      data: [625, 500, 1000, 678, 1250],
+      data: [625, 500, 1000, 678, 1250, 750, 1600],
       backgroundColor: "rgba(116, 119, 191,.3)",
       borderColor: "#7477BF",
       fill: true,
@@ -82,7 +98,9 @@ let monthData = {
 };
 
 let trafficOptions = {
+  responsive: true,
   aspectRatio: 2.5,
+  tension: .3,
   animation: {
       duration: 1000
   },
@@ -145,6 +163,8 @@ const barData = {
 };
 
 const dailyOptions = {
+  responsive: true,
+  aspectRatio: 1.5,
   scales: {
     y: {
       beginAtZero: true
@@ -180,6 +200,8 @@ const mobileData = {
 };
 
 const mobileOptions = {
+  responsive: true,
+  aspectRatio: 1.5,
   plugins: {
     legend: {
       position: 'right',
@@ -208,6 +230,8 @@ send.addEventListener('click', () => {
     alert("Please fill out message field before sending");
   } else {
     alert(`Message successfully sent to: ${user.value}`);
+    document.getElementById("submissionRld").reset();
+    // Line 231: for this project, not really correct, but for the effect of clearing the form after proper submission, it serves its specific purpose.
   }
 });
 //#endregion
@@ -323,7 +347,7 @@ autocomplete(document.getElementById("userField"), memberData);
 // end inserted code
 //#endregion
 
-//#region LOCAL STORAGE
+//#region LOCAL STORAGE [USER SETTINGS/TIMEZONE/SAVE/CANCEL]
 const emailSet = document.getElementById('email-checkbox');
 const profileSet = document.getElementById('public-checkbox');
 const timezoneSet = document.getElementById('timezone');
@@ -335,15 +359,17 @@ saveButton.addEventListener('click', e => {
   const profileOnOff = profileSet.checked;
   const timezoneSel = timezoneSet.selectedIndex;
 
-  // I think my issue is in this section
+// Come back later to work out a possible function for stringify & parse utilization
+// Insert function in project xer2(v3).
+
   localStorage.setItem('a', JSON.stringify(emailOnOff));
   localStorage.setItem('b', JSON.stringify(profileOnOff));
   localStorage.setItem('c', JSON.stringify(timezoneSel));
 });
 
 function settingsStored () {
-  emailSet.checked = localStorage.getItem('a');
-  profileSet.checked = localStorage.getItem('b');
+  emailSet.checked = JSON.parse(localStorage.getItem('a'));
+  profileSet.checked = JSON.parse(localStorage.getItem('b'));
   timezoneSet.selectedIndex = localStorage.getItem('c');
 }
 window.onload = settingsStored ();
