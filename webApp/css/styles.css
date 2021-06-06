@@ -375,7 +375,7 @@ canvas {
   display: none;
 }
 
-span#bold-font {
+.member-info span {
   font-weight: bold;
 }
 /* #endregion */
@@ -493,6 +493,10 @@ textarea {
   background-color: #7477bf;  
 }
 
+#on2 {
+  background-color: #7477bf;  
+}
+
 .toggles  p{
   flex: 0 0 205px;
   margin-right: 1em;
@@ -565,7 +569,7 @@ button:active {
   }
 
   main {
-    grid-template-areas: 50%;   
+    grid-template-columns: 50%;   
   }
 
   nav .sidebar-nav {
