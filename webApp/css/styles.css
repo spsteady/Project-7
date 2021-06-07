@@ -291,6 +291,12 @@ canvas {
   border-radius: .5em;
 }
 
+/* https://stackoverflow.com/questions/24463096/change-svg-viewbox-size-with-css */
+.sub-section svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .social-image {
   background-color: #7477bf;
   border-radius: 50%;
@@ -569,7 +575,8 @@ button:active {
   }
 
   main {
-    grid-template-columns: 50%;   
+    grid-template-columns: 50%;  
+    overflow-x: hidden; 
   }
 
   nav .sidebar-nav {
@@ -585,6 +592,7 @@ button:active {
   .message,
   .settings {
     grid-column: 1 / span 2;
+    overflow-x: hidden;
   }
 
   .daily {
@@ -620,9 +628,13 @@ button:active {
     width: 100%;
   }
 
-  /* .non-mobile {
-    margin-right: 145%;
-  } */
+  .non-mobile {
+    margin-right: 25%;
+  }
+
+  .traffic-nav {
+    margin-right: .9rem;
+  }
 
   .traffic-nav li {
     font-size: 1.1em;
@@ -635,8 +647,14 @@ button:active {
     flex-wrap: nowrap;
     flex-direction: row;    
     justify-content: center;
-    gap: 15px;    
+    gap: 10px;    
     padding-top: .5em;
+    font-size: 1.0em;
+  }
+
+  .sub-section {
+    padding: 10px 10px;
+    font-size: .8em;
   }
   /* #endregion */
 

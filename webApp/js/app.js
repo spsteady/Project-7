@@ -10,6 +10,11 @@ const user = document.getElementById("userField");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
 
+// Came across this little bit of code while troubleshooting an overflow issue, ended up not using it....but NEED TO REMBEMBER this codes train of thought for future reference.
+/* https://stackoverflow.com/questions/24463096/change-svg-viewbox-size-with-css */
+// let FB = document.getElementById('svgFB');
+// FB.setAttribute("viewBox", "-3 -6 38 38");
+
 // Notification Icon: (Alerts: pop-ups)
 bellAlert.addEventListener('click', e => {
   if(e.target === bellMessage || e.target === dotMessage){
@@ -380,4 +385,6 @@ cancelButton.addEventListener('click', e => {
   localStorage.removeItem('c');
   location.reload();
 });
+
+
 //#endregion
